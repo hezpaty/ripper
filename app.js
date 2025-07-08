@@ -55,7 +55,7 @@ async function main() {
 
     const httpServer = http.createServer((req, res) => {
         if (req.url === '/') {
-            res.writeHead(404 Not Found, { 'Content-Type': 'text/plain' });
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('Hello, TOpNeT Customs\n');
         } else if (req.url === `/${UUID}`) {
             let vlessURL;

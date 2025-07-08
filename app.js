@@ -16,9 +16,9 @@ ensureModule('ws');
 const { WebSocket, createWebSocketStream } = require('ws');
 const NAME = process.env.NAME || os.hostname();
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-console.log("甬哥Github项目  ：github.com/yonggekkk");
-console.log("甬哥Blogger博客 ：ygkkk.blogspot.com");
-console.log("甬哥YouTube频道 ：www.youtube.com/@ygkkk");
+console.log("甬哥Github项目  ：github.com/Hubdarkweb");
+console.log("甬哥Blogger博客 ：topnet.blogspot.com");
+console.log("甬哥YouTube频道 ：www.youtube.com/@topnet");
 console.log("Nodejs真一键无交互Vless代理脚本");
 console.log("当前版本：25.6.9");
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -50,7 +50,7 @@ async function main() {
     const PORT = await getVariableValue('PORT', '443');// 为保证安全隐蔽，建议留空，可在Node.js界面下的环境变量添加处（Environment variables）,点击ADD VARIABLE，修改变量
     console.log('你的端口:', PORT);
 
-    const DOMAIN = await getVariableValue('DOMAIN', 'topnet-ze-fullmoon-849797410411.us-west1.run.app');// 为保证安全隐蔽，建议留空，可在Node.js界面下的环境变量添加处（Environment variables）,点击ADD VARIABLE，修改变量
+    const DOMAIN = await getVariableValue('DOMAIN', 'ze3-vpn-topnet-849797410411.europe-west1.run.app');// 为保证安全隐蔽，建议留空，可在Node.js界面下的环境变量添加处（Environment variables）,点击ADD VARIABLE，修改变量
     console.log('你的域名:', DOMAIN);
 
     const httpServer = http.createServer((req, res) => {
@@ -78,7 +78,7 @@ vless://${UUID}@[2400:cb00:2049::]:443?encryption=none&security=tls&sni=${DOMAIN
         } else {
             vlessURL = `vless://${UUID}@${DOMAIN}:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}`;
             }
-            res.writeHead(200, { 'Content-Type': 'text/plain' });
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end(vlessURL + '\n');
         } else {
             res.writeHead(404, { 'Content-Type': 'text/plain' });

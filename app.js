@@ -5,7 +5,7 @@
   "inbounds": [
     {
       "listen": "0.0.0.0",
-      "port": "1080",
+      "port": "8080",
       "protocol": "dokodemo-door",
       "settings": {
         "network": "tcp,udp",
@@ -16,7 +16,7 @@
     },
     {
       "listen": "127.0.0.1",
-      "port": 10808,
+      "port": 8080,
       "protocol": "socks",
       "settings": {
         "auth": "noauth",

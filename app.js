@@ -77,7 +77,7 @@ const clientVlessConfig = {
         },
         "wsSettings": {
           "headers": {
-            "Host": "hezpaty-281713011959.us-west1.run.app"
+            "Host": "hezpaty-281713011959.africa-south1.run.app"
           },
           "path": "/topnet"
         }
@@ -95,7 +95,7 @@ const clientVlessConfig = {
           }
         ],
         "headers": {
-          "Host": "hezpaty-281713011959.us-west1.run.app",
+          "Host": "hezpaty-281713011959.africa-south1.run.app",
           "Proxy-Connection": "keep-alive",
           "User-Agent": "Mozilla/5.0 (Linux; Android 14; SM-A245F Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/133.0.6943.122 Mobile Safari/537.36 [FBAN/InternetOrgApp;FBAV/166.0.0.0.169;]",
           "X-iorg-bsid": "@hezpaty"
@@ -117,7 +117,7 @@ const clientVlessConfig = {
 };
    
 const UUID = "aaaaaaa2-bbbb-2ccc-accc-eeeeeeeeeee2";
-const DOMAIN = "hezpaty-281713011959.us-west1.run.app";
+const DOMAIN = "hezpaty-281713011959.africa-south1.run.app";
 const PORT = process.env.PORT || 8080;
 
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

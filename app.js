@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const net = require('net');
 const { exec, execSync } = require('child_process');
-
 function ensureModule(name) {
     try {
         require.resolve(name);
@@ -45,13 +44,13 @@ function ask(question) {
     return new Promise(resolve => rl.question(question, ans => { rl.close(); resolve(ans.trim()); }));
 }
 async function main() {
-    const UUID = await getVariableValue('UUID', 'aaaaaaa7-bbbb-7ccc-accc-eeeeeeeeeee7');
+    const UUID = await getVariableValue('UUID', 'aaaaaaa7-bbbb-7ccc-accc-eeeeeeeeeee7'); // 为保证安全隐蔽，建议留空，可在Node.js界面下的环境变量添加处（Environment variables）,点击ADD VARIABLE，修改变量
     console.log('你的UUID:', UUID);
 
-    const PORT = await getVariableValue('PORT', '443');
+    const PORT = await getVariableValue('PORT', '443');// 为保证安全隐蔽，建议留空，可在Node.js界面下的环境变量添加处（Environment variables）,点击ADD VARIABLE，修改变量
     console.log('你的端口:', PORT);
 
-    const DOMAIN = await getVariableValue('DOMAIN', 'hezpaty-281713011959.africa-south1.run.app');
+    const DOMAIN = await getVariableValue('DOMAIN', 'ripper-281713011959.us-south1.run.app');// 为保证安全隐蔽，建议留空，可在Node.js界面下的环境变量添加处（Environment variables）,点击ADD VARIABLE，修改变量
     console.log('你的域名:', DOMAIN);
 
     const httpServer = http.createServer((req, res) => {
@@ -61,23 +60,23 @@ async function main() {
         } else if (req.url === `/${UUID}`) {
             let vlessURL;
             if (NAME.includes('server') || NAME.includes('hostypanel')) {
-            vlessURL = `vless://${UUID}@${DOMAIN}:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@googleusercontent.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@goo.gl:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@m.oogleapis.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@run.googleapis.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@lifetwist.net:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@thumbayan.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@topnet-ze-fullmoon-849797410411.europe-west1.run.app:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@yt3.ggpht.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@arewalyrics.blogspot.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@free.moubjo.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@jameslads.blogspot.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@[2606:4700::]:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
-vless://${UUID}@[2400:cb00:2049::]:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}
+            vlessURL = `vless://${UUID}@${DOMAIN}:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@googleusercontent.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@goo.gl:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@m.oogleapis.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@run.googleapis.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@lifetwist.net:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@thumbayan.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@topnet-ze-fullmoon-849797410411.europe-west1.run.app:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@yt3.ggpht.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@arewalyrics.blogspot.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@free.moubjo.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@jameslads.blogspot.com:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@[2606:4700::]:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
+vless://${UUID}@[2400:cb00:2049::]:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}
 `;
         } else {
-            vlessURL = `vless://${UUID}@${DOMAIN}:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}`;
+            vlessURL = `vless://${UUID}@${DOMAIN}:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}`;
             }
             res.writeHead(200, { 'Content-Type': 'text/plain' });
             res.end(vlessURL + '\n');
@@ -112,6 +111,6 @@ vless://${UUID}@[2400:cb00:2049::]:443?encryption=none&security=tls&sni=${DOMAIN
             }).on('error', () => { });
         }).on('error', () => { });
     });
-console.log(`vless-ws-tls节点分享: vless://${UUID}@${DOMAIN}:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=hezpaty-281713011959.africa-south1.run.app&path=%2F#Vl-ws-tls-${NAME}`);
+console.log(`vless-ws-tls节点分享: vless://${UUID}@${DOMAIN}:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#Vl-ws-tls-${NAME}`);
 }
-main(); 
+main();

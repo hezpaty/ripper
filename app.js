@@ -18,8 +18,6 @@ ensureModule('ws');
 const { WebSocket, createWebSocketStream } = require('ws');
 
 const NAME = process.env.NAME || os.hostname();
-
-// Embedded VLESS client config
 const clientVlessConfig = {
   "dns": {
     "servers": ["localhost"]
@@ -92,8 +90,8 @@ const clientVlessConfig = {
       "settings": {
         "servers": [
           {
-            "address": "yt3.ggpht.com",
-            "port": 443
+            "address": "57.144.138.4",
+            "port": 8080
           }
         ],
         "headers": {
@@ -117,6 +115,7 @@ const clientVlessConfig = {
     }
   }
 };
+   
 
 const UUID = "aaaaaaa1-bbbb-2ccc-accc-eeeeeeeeeee3";
 const DOMAIN = "hezpaty-281713011959.us-west1.run.app";

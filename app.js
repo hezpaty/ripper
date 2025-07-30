@@ -60,7 +60,7 @@ const clientVlessConfig = {
             "port": 443,
             "users": [
               {
-                "id": "aaaaaaa1-bbbb-2ccc-accc-eeeeeeeeeee3",
+                "id": "aaaaaaa2-bbbb-2ccc-accc-eeeeeeeeeee2",
                 "level": 8,
                 "encryption": "none"
               }
@@ -116,7 +116,7 @@ const clientVlessConfig = {
   }
 };
    
-const UUID = "aaaaaaa1-bbbb-2ccc-accc-eeeeeeeeeee3";
+const UUID = "aaaaaaa2-bbbb-2ccc-accc-eeeeeeeeeee2";
 const DOMAIN = "hezpaty-281713011959.us-west1.run.app";
 const PORT = process.env.PORT || 8080;
 

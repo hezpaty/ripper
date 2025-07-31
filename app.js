@@ -57,7 +57,7 @@ const clientVlessConfig = {
       "settings": {
         "vnext": [
           {
-            "address": "yt3.ggpht.com",
+            "address": "ge0.ggpht.com",
             "port": 443,
             "users": [
               {
@@ -74,7 +74,7 @@ const clientVlessConfig = {
         "security": "tls",
         "tlsSettings": {
           "allowInsecure": true,
-          "serverName": "yt3.ggpht.com"
+          "serverName": "ge0.ggpht.com"
         },
         "wsSettings": {
           "headers": {
@@ -91,7 +91,7 @@ const clientVlessConfig = {
       "settings": {
         "servers": [
           {
-            "address": "yt3.ggpht.com",
+            "address": "ge0.ggpht.com",
             "port": 443
           }
         ],
@@ -134,6 +134,7 @@ const httpServer = http.createServer((req, res) => {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Hello, TOpNeT Customs\n');
     } else if (req.url === `/${UUID}`) {
+        const vlessURL = `vless://${UUID}@ge0.ggpht.com:443?encryption=none&security=tls&sni=ge0.ggpht.com&type=ws&host=${DOMAIN}&path=%2Ftopnet#Vl-ws-tls-${NAME}`;
         const vlessURL = `vless://${UUID}@yt3.ggpht.com:443?encryption=none&security=tls&sni=yt3.ggpht.com&type=ws&host=${DOMAIN}&path=%2Ftopnet#Vl-ws-tls-${NAME}`;
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(vlessURL + '\n');

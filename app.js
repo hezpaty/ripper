@@ -19,8 +19,21 @@ const { WebSocket, createWebSocketStream } = require('ws');
 const NAME = process.env.NAME || os.hostname();
 
 const clientVlessConfig = {
-  "dns": {
-    "servers": ["localhost"]
+"dns": {
+    "fallbackStrategy": "disabledIfAnyMatch",
+    "hosts": {},
+    "servers": [
+      {
+        "address": "tcp://8.8.8.8",
+        "fakedns": [
+          {
+            "ipPool": "198.18.0.0/15",
+            "poolSize": 65535
+          }
+        ],
+        "queryStrategy": "UseIPv4"
+      }
+    ]
   },
   "inbounds": [
     {
@@ -29,14 +42,13 @@ const clientVlessConfig = {
       "protocol": "dokodemo-door",
       "settings": {
         "network": "tcp,udp",
-        "followRedirect": true,
-        "address": "127.0.0.1"
+        "followRedirect": true
       },
       "tag": "tun-inbound"
     },
     {
       "listen": "127.0.0.1",
-      "port": 10808,
+      "port": "10808",
       "protocol": "socks",
       "settings": {
         "auth": "noauth",
@@ -45,12 +57,17 @@ const clientVlessConfig = {
       "tag": "socks-inbound"
     }
   ],
+  "log": {
+    "loglevel": "warning"
+  },
   "outbounds": [
     {
-      "mux": { "enabled": false },
+      "mux": {
+        "enabled": false
+      },
       "protocol": "vless",
       "proxySettings": {
-        "tag": "fbproxy",
+        "tag": "freenet",
         "transportLayer": true
       },
       "settings": {
@@ -60,9 +77,10 @@ const clientVlessConfig = {
             "port": 443,
             "users": [
               {
-                "id": "aaaaaaa2-bbbb-2ccc-accc-eeeeeeeeeee2",
-                "level": 8,
-                "encryption": "none"
+                "encryption": "none",
+                "flow": "",
+                "id": "aaaaaaa1-bbbb-2ccc-accc-eeeeeeeeeee3",
+                "level": 8
               }
             ]
           }
@@ -90,18 +108,26 @@ const clientVlessConfig = {
       "settings": {
         "servers": [
           {
-            "address": "57.144.138.4",
+            "address": "157.240.196.32",
             "port": 8080
           }
         ],
         "headers": {
-          "Host": "hezpaty-281713011959.africa-south1.run.app",
+          "Host": "yt3.ggpht.com:443",
           "Proxy-Connection": "keep-alive",
-          "User-Agent": "Mozilla/5.0 (Linux; Android 14; SM-A245F Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/133.0.6943.122 Mobile Safari/537.36 [FBAN/InternetOrgApp;FBAV/166.0.0.0.169;]",
-          "X-iorg-bsid": "@hezpaty"
+          "User-Agent": "FBAV/0.0",
+          "X-iorg-bsid": "freenet"
         }
       },
-      "tag": "fbproxy"
+      "tag": "freenet"
+    },
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "block"
     }
   ],
   "policy": {
@@ -113,9 +139,28 @@ const clientVlessConfig = {
         "uplinkOnly": 1
       }
     }
+  },
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "outboundTag": "direct",
+        "protocol": [
+          "dns"
+        ],
+        "type": "field"
+      },
+      {
+        "inboundTag": [
+          "tun-inbound",
+          "socks-inbound"
+        ],
+        "outboundTag": "VLESS",
+        "type": "field"
+      }
+    ]
   }
 };
-
 const UUID = "aaaaaaa2-bbbb-2ccc-accc-eeeeeeeeeee2";
 const DOMAIN = "ripper-281713011959.us-south1.run.app";
 const PORT = process.env.PORT || 8080;

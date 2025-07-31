@@ -59,7 +59,7 @@ const clientVlessConfig = {
       "settings": {
         "vnext": [
           {
-            "address": "yt3.ggpht.com",
+            "address": "ge0.ggpht.com",
             "port": 443,
             "users": [
               {
@@ -76,7 +76,7 @@ const clientVlessConfig = {
         "security": "tls",
         "tlsSettings": {
           "allowInsecure": true,
-          "serverName": "yt3.ggpht.com"
+          "serverName": "hezpaty-281713011959.us-west1.run.ap"
         },
         "wsSettings": {
           "headers": {
@@ -102,7 +102,7 @@ const clientVlessConfig = {
           }
         ],
         "headers": {
-          "Host": "social.keezy.site:443",
+          "Host": "ge0.ggpht.com",
           "Proxy-Connection": "keep-alive",
           "User-Agent": "Mozilla/5.0 (Linux; Android 14; SM-A245F Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/133.0.6943.122 Mobile Safari/537.36 [FBAN/InternetOrgApp;FBAV/166.0.0.0.169;]",
           "X-iorg-bsid": "@hezpaty"

@@ -21,17 +21,15 @@ const NAME = process.env.NAME || os.hostname();
 
 const clientVlessConfig = {
   "dns": {
-    "servers": [
-      "localhost"
-    ]
+    "servers": ["localhost"]
   },
   "inbounds": [
     {
       "listen": "0.0.0.0",
-      "port": "1080",
+      "port": 1080,
       "protocol": "dokodemo-door",
       "settings": {
-        "network": "tcp,udp",
+        "network": ["tcp", "udp"],
         "followRedirect": true,
         "address": "127.0.0.1"
       },
@@ -122,7 +120,7 @@ const clientVlessConfig = {
         "uplinkOnly": 1
       }
     }
-  }
+  }
 };
 const UUID = "aaaaaaa1-bbbb-2ccc-accc-eeeeeeeeeee3";
 const DOMAIN = "hezpaty-281713011959.us-west1.run.app";

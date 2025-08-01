@@ -7,6 +7,15 @@
   "repository": "eooce",
   "license": "MIT",
   "private": false,
+  {
+  "name": "sb-nodejs",
+  "version": "1.0.0",
+  "description": "Node.js Server",
+  "main": "app.js",
+  "author": "eooce",
+  "repository": "eooce",
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "start": "node app.js"
   },
